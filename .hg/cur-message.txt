@@ -1,2 +1,0 @@
-FileManager for reading dicionary has been done
-And some functions: such like reading/writing to/from inner dictionaries
