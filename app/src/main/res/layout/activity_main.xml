@@ -1,0 +1,33 @@
+<LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:paddingBottom="50dp"
+        android:gravity="bottom"
+        android:background="@drawable/black_pattern_background">
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnStart"
+            android:text="@string/start"
+            android:gravity="center_horizontal|center_vertical"
+            android:textStyle="bold|italic"
+            android:textSize="24sp"
+            android:background="@drawable/button_background"
+            android:layout_marginBottom="10dp"/>
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnDownload"
+            android:text="@string/downloadDicationary"
+            android:gravity="center_horizontal|center_vertical"
+            android:textStyle="bold|italic"
+            android:textSize="24sp"
+            android:background="@drawable/button_background"
+            />
+
+</LinearLayout>
