@@ -1,0 +1,12 @@
+dog | собака
+arrow|стрела
+cat |кот
+man | человек
+woman | женщина
+keep calm | схоранять спокойствие
+bag | сумка
+leg | нога
+purgatory | чистилище
+left | лево
+house | дом
+mouse | мыш

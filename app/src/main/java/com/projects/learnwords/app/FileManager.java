@@ -12,10 +12,7 @@ import android.os.Bundle;
 import android.text.style.AlignmentSpan;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.*;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -32,7 +29,31 @@ public class FileManager extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         savedNamesLearned = getSharedPreferences("namesLearned", MODE_PRIVATE);
+        note();
         browseTo(new File("/mnt/sdcard"));
+    }
+
+    private void note(){
+        final TextView newDict = new TextView(this);
+        final String text = "dog | собака \narrow | стрела \ncat |кот \nleft | лево \nhouse | дом \nmouse | мыш" ;
+        newDict.setText(text);
+        newDict.setBackgroundColor(-1);
+        newDict.setTextSize(25);
+
+        DialogInterface.OnClickListener okButtonListener = new DialogInterface.OnClickListener() {
+            Set<String> tags;
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        };
+
+        new AlertDialog.Builder(this)
+                    .setTitle("Напоминание")
+                    .setMessage("Словарь должен быть в формате txt и иметь вид \"слово | перевод\", например:")
+                    .setView(newDict)
+                    .setPositiveButton("Запомнил", okButtonListener)
+                    .show();
     }
 
     private void upOneLevel(){
@@ -146,7 +167,7 @@ public class FileManager extends ListActivity {
         }
     }
 
-    private DictionaryRow[] parseWords(String str){
+    public static DictionaryRow[] parseWords(String str){
         String firstWord;
         String secondWord;
         String[] strLines = str.split("\n");
