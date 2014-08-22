@@ -13,6 +13,7 @@ import android.text.style.AlignmentSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.*;
+import com.projects.learnwords.exceprion.FileFormatException;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -30,7 +31,11 @@ public class FileManager extends ListActivity {
         super.onCreate(savedInstanceState);
         savedNamesLearned = getSharedPreferences("namesLearned", MODE_PRIVATE);
         note();
-        browseTo(new File("/mnt/sdcard"));
+        try {
+            browseTo(new File("/mnt/sdcard"));
+        } catch (FileFormatException e){
+            Toast.makeText(getApplicationContext(), "Неверный формат файла. Необходим .txt", Toast.LENGTH_LONG).show();
+        }
     }
 
     private void note(){
@@ -58,19 +63,28 @@ public class FileManager extends ListActivity {
 
     private void upOneLevel(){
         if(currentDirectory.getParent() != null){
-            browseTo(currentDirectory.getParentFile());
+            try {
+                browseTo(currentDirectory.getParentFile());
+            } catch (FileFormatException e){
+                Toast.makeText(getApplicationContext(), "Неверный формат файла. Необходим .txt", Toast.LENGTH_LONG).show();
+            }
         }
     }
 
-    private void browseTo(final File aDirectory){
+    private void browseTo(final File aDirectory) throws FileFormatException {
         final EditText newDictionaryName = new EditText(this);
         final AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
-        newDictionaryName.setText(aDirectory.getName().substring(0, aDirectory.getName().length()-4));
+        String appStaticName = aDirectory.getName();
+        newDictionaryName.setText(appStaticName.substring(0, aDirectory.getName().length() - 4));
 
         if(aDirectory.isDirectory()){
             currentDirectory = aDirectory;
             fill(aDirectory.listFiles());
         } else {
+
+            if(!appStaticName.endsWith(".txt"))
+                throw new FileFormatException();
+
             DialogInterface.OnClickListener okButtonListener = new DialogInterface.OnClickListener() {
                 Set<String> tags;
                 @Override
@@ -225,8 +239,13 @@ public class FileManager extends ListActivity {
         } else {
             File clickedFile = null;
             clickedFile = new File(selectedFileString);
-            if(clickedFile != null)
-                browseTo(clickedFile);
+            if(clickedFile != null) {
+                try {
+                    browseTo(clickedFile);
+                } catch (FileFormatException e){
+                    Toast.makeText(getApplicationContext(), "Неверный формат файла. Необходим .txt", Toast.LENGTH_LONG).show();
+                }
+            }
         }
     }
 
