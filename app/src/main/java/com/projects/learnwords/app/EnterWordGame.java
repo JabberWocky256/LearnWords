@@ -92,6 +92,7 @@ public class EnterWordGame extends Activity {
 
             translateWord.setText(" ");
         } else {
+            Collections.shuffle(rows);
             enWords = rows.iterator();
             nextWord(enWords);
         }
@@ -111,8 +112,10 @@ public class EnterWordGame extends Activity {
         public void onClick(View v) {
             String secondWordUser = translateWord.getText().toString().toLowerCase();
             secondWordUser = FileManager.checkWord(secondWordUser);
+
             final String firstWord;
             final boolean correctWordLanguageFlag = correctWordLanguage.equals(DbControl.CORRECT_FIRST_WORDS);
+
             if(correctWordLanguageFlag)
                 firstWord = dictRow.getSecondWord();
             else
