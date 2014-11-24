@@ -7,8 +7,17 @@
         android:icon="@drawable/dict_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+
+
+        <activity android:name="com.projects.learnwords.example.MainActivity">
+        </activity>
+
+        <activity android:name="com.projects.learnwords.example.NextActivity">
+        </activity>
+
+
         <activity
-            android:name="com.projects.learnwords.app.MainActivity"
+            android:name="com.projects.learnwords.activities.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -16,17 +25,29 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".FileManager"
+        <activity android:name="com.projects.learnwords.activities.FileManagerActivity"
                 android:noHistory="true">
         </activity>
 
-        <activity android:name=".EnterWordGame">
-
+        <activity android:name="com.projects.learnwords.games.TranslateWordGameActivity">
         </activity>
 
-        <activity android:name=".StartGame">
-
+        <activity android:name="com.projects.learnwords.games.PazzleWordGameActivity">
         </activity>
+
+        <activity android:name="com.projects.learnwords.activities.StartGameActivity">
+        </activity>
+
+        <activity android:name="com.projects.learnwords.activities.PreferencesActivity">
+        </activity>
+
+        <activity android:name="com.projects.learnwords.activities.CreateDictionaryActivity">
+        </activity>
+
+        <activity android:name="com.projects.learnwords.activities.EditDictionaryActivity"
+                  android:windowSoftInputMode="stateVisible|adjustPan">
+        </activity>
+
     </application>
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>

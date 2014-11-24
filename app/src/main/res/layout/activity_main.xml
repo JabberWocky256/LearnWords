@@ -1,33 +1,53 @@
-<LinearLayout
-        android:orientation="vertical"
+<FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:paddingLeft="50dp"
-        android:paddingRight="50dp"
-        android:paddingBottom="50dp"
-        android:gravity="bottom"
-        android:background="@drawable/black_pattern_background">
-
-    <Button
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnStart"
-            android:text="@string/start"
-            android:gravity="center_horizontal|center_vertical"
-            android:textStyle="bold|italic"
-            android:textSize="24sp"
-            android:background="@drawable/button_background"
-            android:layout_marginBottom="10dp"/>
-    <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnDownload"
-            android:text="@string/downloadDicationary"
-            android:gravity="center_horizontal|center_vertical"
-            android:textStyle="bold|italic"
-            android:textSize="24sp"
-            android:background="@drawable/button_background"
-            />
+            android:layout_height="match_parent"
+            android:src="@drawable/background"
+            android:scaleType="centerCrop"/>
 
-</LinearLayout>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="bottom">
+
+        <Button
+                android:layout_width="260dp"
+                android:layout_height="65dp"
+                android:id="@+id/btnStart"
+                android:text="@string/start"
+                android:gravity="center_horizontal|center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:background="@drawable/button_background"
+                android:textColor="#000"/>
+        <Button
+                android:layout_width="260dp"
+                android:layout_height="65dp"
+                android:id="@+id/btnDownloadDictionary"
+                android:text="@string/downloadDictionary"
+                android:gravity="center_horizontal|center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:background="@drawable/button_background"
+                android:textColor="#000"/>
+        <Button
+                android:layout_width="260dp"
+                android:layout_height="65dp"
+                android:id="@+id/btnCreateDictionary"
+                android:text="@string/create_dictionary"
+                android:gravity="center_horizontal|center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:background="@drawable/button_background"
+                android:layout_marginBottom="50dp"
+                android:textColor="#000"/>
+
+    </LinearLayout>
+</FrameLayout>
