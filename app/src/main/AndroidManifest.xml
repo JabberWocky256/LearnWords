@@ -3,10 +3,10 @@
     package="com.projects.learnwords.app" >
 
     <application
-        android:allowBackup="true"
-        android:icon="@drawable/dict_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+            android:allowBackup="true"
+            android:icon="@drawable/dict_launcher"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme" >
 
 
         <activity android:name="com.projects.learnwords.example.MainActivity">
@@ -17,8 +17,8 @@
 
 
         <activity
-            android:name="com.projects.learnwords.activities.MainActivity"
-            android:label="@string/app_name" >
+                android:name="com.projects.learnwords.activities.MainActivity"
+                android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -26,7 +26,7 @@
         </activity>
 
         <activity android:name="com.projects.learnwords.activities.FileManagerActivity"
-                android:noHistory="true">
+                  android:noHistory="true">
         </activity>
 
         <activity android:name="com.projects.learnwords.games.TranslateWordGameActivity">

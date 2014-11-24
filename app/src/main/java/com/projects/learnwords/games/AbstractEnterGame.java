@@ -2,10 +2,8 @@ package com.projects.learnwords.games;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
-import com.projects.learnwords.activities.StartGameActivity;
 import com.projects.learnwords.app.DbControl;
 import com.projects.learnwords.app.Dictionary;
 import com.projects.learnwords.app.IDictionaryRow;

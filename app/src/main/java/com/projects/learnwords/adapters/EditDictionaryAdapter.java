@@ -5,9 +5,14 @@ import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.TextView;
 import com.projects.learnwords.activities.EditDictionaryActivity;
-import com.projects.learnwords.app.*;
+import com.projects.learnwords.app.DictionaryRowState;
+import com.projects.learnwords.app.IDictionaryRow;
+import com.projects.learnwords.app.IDictionaryRowStateDecorator;
+import com.projects.learnwords.app.R;
 
 import java.util.List;
 

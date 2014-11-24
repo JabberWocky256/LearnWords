@@ -1,6 +1,7 @@
 package com.projects.learnwords.app;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Александр on 14.10.2014.

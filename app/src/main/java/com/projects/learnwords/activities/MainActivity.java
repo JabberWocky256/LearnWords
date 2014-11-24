@@ -16,7 +16,9 @@ import com.projects.learnwords.app.DbControl;
 import com.projects.learnwords.app.DictionaryRow;
 import com.projects.learnwords.app.R;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 
 

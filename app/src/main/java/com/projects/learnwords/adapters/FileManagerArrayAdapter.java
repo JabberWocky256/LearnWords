@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.projects.learnwords.app.R;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 

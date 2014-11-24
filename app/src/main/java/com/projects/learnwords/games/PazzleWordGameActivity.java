@@ -1,10 +1,12 @@
 package com.projects.learnwords.games;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.projects.learnwords.app.DbControl;
 import com.projects.learnwords.app.IDictionaryRow;
 import com.projects.learnwords.app.R;

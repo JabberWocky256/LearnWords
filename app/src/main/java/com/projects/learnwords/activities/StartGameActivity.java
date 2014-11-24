@@ -4,11 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.Spinner;
+import com.projects.learnwords.adapters.StartGameArrayAdapter;
 import com.projects.learnwords.app.DbControl;
 import com.projects.learnwords.app.R;
-import com.projects.learnwords.adapters.StartGameArrayAdapter;
-import com.projects.learnwords.games.EnterWordGameActivity;
 import com.projects.learnwords.games.PazzleWordGameActivity;
 import com.projects.learnwords.games.TranslateWordGameActivity;
 
