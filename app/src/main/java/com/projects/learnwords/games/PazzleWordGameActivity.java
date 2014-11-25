@@ -9,9 +9,12 @@ import android.widget.*;
 import com.projects.learnwords.app.DbControl;
 import com.projects.learnwords.app.IDictionaryRow;
 import com.projects.learnwords.app.R;
+import com.projects.learnwords.elements.ButtonsGroup;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by Александр on 12.11.2014.
@@ -51,7 +54,7 @@ public class PazzleWordGameActivity extends AbstractEnterGame{
         }
     }
 
-    private void setButtons(){
+    private void setButtonGroup(){
         buttonsLayout = (LinearLayout) findViewById(R.id.buttonsSymbolLayout);
 
         char[] answer = getRightWord().toCharArray();
@@ -62,23 +65,22 @@ public class PazzleWordGameActivity extends AbstractEnterGame{
             answerHash.add(ch);
         Iterator<Character> iterator = answerHash.iterator();
 
-        LinearLayout row = new LinearLayout(this);
-        row.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+        ButtonsGroup btnGroup = new ButtonsGroup(this);
 
         while (iterator.hasNext()) {
             final Button btnTag = new Button(this);
-            btnTag.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
             btnTag.setText(iterator.next().toString());
-            btnTag.setOnClickListener(new View.OnClickListener() {
+            btnGroup.addView(btnTag);
+            btnGroup.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     txtTranslateWord.setText(txtTranslateWord.getText() + btnTag.getText().toString());
                 }
             });
-            row.addView(btnTag);
         }
+
         buttonsLayout.removeAllViews();
-        buttonsLayout.addView(row);
+        buttonsLayout.addView(btnGroup);
         buttonsLayout.refreshDrawableState();
         buttonsLayout.clearFocus();
     }
@@ -92,7 +94,7 @@ public class PazzleWordGameActivity extends AbstractEnterGame{
             txtWord.setText(row.getSecondWord());
 
         txtTranslateWord.setText("");
-        setButtons();
+        setButtonGroup();
     }
 
     private String getDictionaryName(){
