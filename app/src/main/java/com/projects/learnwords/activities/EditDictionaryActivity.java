@@ -14,6 +14,7 @@ import com.projects.learnwords.adapters.EditDictionaryAdapter;
 import com.projects.learnwords.app.*;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -50,6 +51,7 @@ public class EditDictionaryActivity extends Activity {
 
         EditDictionaryAdapter adapter = new EditDictionaryAdapter(this, dictionary.getRows());
         lvWords.setAdapter(adapter);
+
         btnSave.setOnClickListener(btnSaveListener());
         btnAddNewData.setOnClickListener(btnAddNewDataListener());
     }
@@ -57,6 +59,9 @@ public class EditDictionaryActivity extends Activity {
     public Dictionary createDictionary() {
         Dictionary dictionary = new Dictionary();
         List<IDictionaryRow> dictionaryRows = readWordsFromDB();
+
+        if(dictionaryRows == null)
+            return dictionary;
 
         for(IDictionaryRow row: dictionaryRows){
             dictionary.setRow(row);
@@ -166,9 +171,20 @@ public class EditDictionaryActivity extends Activity {
             @Override
             public void onClick(View v) {
                 isDictionaryChanged = true;
-                DictionaryRowState drs = new DictionaryRowState(new DictionaryRow(dictionary.getRows().get(dictionary.getRows().size() - 1).getId() + 1,
-                        "Новое слово", "Новый перевод", 0, 0, "", ""));
-                dictionary.getRows().add(drs);
+                DictionaryRowState drs;
+
+                if(dictionary.getRows().size() == 0) {
+                    drs = new DictionaryRowState(new DictionaryRow(1,
+                            "Новое слово", "Новый перевод", 0, 0, "", ""));
+
+                    List<IDictionaryRow> list = new ArrayList<IDictionaryRow>();
+                    list.add(drs);
+                    dictionary.setRows(list);
+                } else {
+                    drs = new DictionaryRowState(new DictionaryRow(dictionary.getRows().get(dictionary.getRows().size() - 1).getId() + 1,
+                            "Новое слово", "Новый перевод", 0, 0, "", ""));
+                    dictionary.getRows().add(drs);
+                }
                 drs.setChangedState(DictionaryRowState.DictionaryRowStates.ADD);
                 recreate();
             }

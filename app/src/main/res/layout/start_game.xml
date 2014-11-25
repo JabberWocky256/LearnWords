@@ -1,72 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@drawable/black_pattern_background">
-
-    <Spinner
+<FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/spinner"
-            android:layout_gravity="center_horizontal"
-            android:textStyle="bold|italic" android:background="#ffffffff"/>
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/scroll"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="right">
-        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:src="@drawable/background"
+            android:scaleType="centerCrop"/>
 
     <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
+                  android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent">
+
+
+        <Spinner
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:gravity="left">
-            <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/imageEng"
-                    android:src="@drawable/word_translate"/>
-            <Button
+                android:id="@+id/spinner"
+                android:layout_gravity="center_horizontal"
+                android:textStyle="bold|italic" android:background="#ffffffff"/>
+        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/scroll"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@string/train"
-                    android:id="@+id/btnOkEng"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:textStyle="bold|italic"
-                    android:textSize="19sp"/>
-            </LinearLayout>
+                    android:layout_gravity="right">
+            <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="vertical">
 
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:gravity="right" android:layout_weight="1">
-            <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/imageRus"
-                    android:src="@drawable/translate_word"/>
-        <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/train"
-                android:gravity="center_horizontal|center_vertical"
-                android:textStyle="bold|italic"
-                android:textSize="19sp"
-                android:id="@+id/btnOkRus"/>
-            </LinearLayout>
-
-    </LinearLayout>
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
@@ -81,17 +42,19 @@
                 <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageEngSelect"
+                        android:id="@+id/imageEng"
                         android:src="@drawable/word_translate"/>
                 <Button
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="65dp"
                         android:text="@string/train"
-                        android:id="@+id/btnOkEngSelect"
+                        android:id="@+id/btnOkEng"
                         android:gravity="center_horizontal|center_vertical"
                         android:textStyle="bold|italic"
-                        android:textSize="19sp"/>
-            </LinearLayout>
+                        android:textSize="19sp"
+                        android:background="@drawable/button_background"
+                        android:textColor="#000"/>
+                </LinearLayout>
 
             <LinearLayout
                     android:orientation="vertical"
@@ -102,19 +65,74 @@
                 <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageRusSelect"
+                        android:id="@+id/imageRus"
                         android:src="@drawable/translate_word"/>
-                <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/train"
-                        android:gravity="center_horizontal|center_vertical"
-                        android:textStyle="bold|italic"
-                        android:textSize="19sp"
-                        android:id="@+id/btnOkRusSelect"/>
-            </LinearLayout>
+            <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:text="@string/train"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textStyle="bold|italic"
+                    android:textSize="19sp"
+                    android:id="@+id/btnOkRus"
+                    android:background="@drawable/button_background"
+                    android:textColor="#000"/>
+                </LinearLayout>
 
         </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:gravity="left">
+                    <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/imageEngSelect"
+                            android:src="@drawable/word_translate"/>
+                    <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="65dp"
+                            android:text="@string/train"
+                            android:id="@+id/btnOkEngSelect"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:textStyle="bold|italic"
+                            android:textSize="19sp"
+                            android:background="@drawable/button_background"
+                            android:textColor="#000"/>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:gravity="right" android:layout_weight="1">
+                    <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/imageRusSelect"
+                            android:src="@drawable/translate_word"/>
+                    <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="65dp"
+                            android:text="@string/train"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:textStyle="bold|italic"
+                            android:textSize="19sp"
+                            android:id="@+id/btnOkRusSelect"
+                            android:background="@drawable/button_background"
+                            android:textColor="#000"/>
+                </LinearLayout>
+
+            </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</FrameLayout>

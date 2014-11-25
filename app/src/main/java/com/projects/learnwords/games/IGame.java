@@ -8,7 +8,7 @@ import com.projects.learnwords.app.IDictionaryRow;
  * Created by Александр on 29.10.2014.
  */
 public interface IGame {
-    public void initialize(Context context, String dictName, int repeat);
+    public boolean initialize(Context context, String dictName, int repeat);
     public String getLanguage();
     public boolean check(String userWord);
     public Dictionary readWordsFromBD();

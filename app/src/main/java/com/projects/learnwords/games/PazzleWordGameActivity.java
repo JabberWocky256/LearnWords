@@ -2,11 +2,10 @@ package com.projects.learnwords.games;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.*;
 import com.projects.learnwords.app.DbControl;
 import com.projects.learnwords.app.IDictionaryRow;
 import com.projects.learnwords.app.R;
@@ -29,43 +28,44 @@ public class PazzleWordGameActivity extends AbstractEnterGame{
 
         txtWord = (TextView)findViewById(R.id.word);
         txtTranslateWord = (EditText) findViewById(R.id.translateWord);
-        buttonsLayout = (LinearLayout) findViewById(R.id.buttonsSymbolLayout);
 
-/*
-        btnAnswer = (Button) findViewById(R.id.btnOk);
+        if(!initialize(getApplicationContext(), getDictionaryName(), 4)){
+            Toast.makeText(getApplicationContext(), "Все слова изучены", Toast.LENGTH_SHORT).show();
+        } else {
+            txtTranslateWord.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
-        btnAnswer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(checkWord(txtTranslateWord.getText().toString())) {
-                    currentDictionaryRow = getNextWord();
-                    setUI(currentDictionaryRow);
-                    txtTranslateWord.setText("");
-                } else {
-                    Toast.makeText(getApplicationContext(), "WRONG!", Toast.LENGTH_SHORT).show();
-
-                    if(language.equals(DbControl.CORRECT_FIRST_WORDS))
-                        txtTranslateWord.setText(currentDictionaryRow.getSecondWord());
-                    else
-                        txtTranslateWord.setText(currentDictionaryRow.getFirstWord());
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    if(txtTranslateWord.getText().toString().equals(getRightWord())){
+                        currentDictionaryRow = getNextWord();
+                        buttonsLayout = null;
+                        setUI(currentDictionaryRow);
+                    }
                 }
-            }
-        });*/
 
-        initialize(getApplicationContext(), getDictionaryName(), 4);
+                @Override
+                public void afterTextChanged(Editable s) { }
+            });
+        }
+    }
+
+    private void setButtons(){
+        buttonsLayout = (LinearLayout) findViewById(R.id.buttonsSymbolLayout);
 
         char[] answer = getRightWord().toCharArray();
 
         HashSet<Character> answerHash = new HashSet<Character>();
 
-        for(char ch:answer)
+        for (char ch : answer)
             answerHash.add(ch);
         Iterator<Character> iterator = answerHash.iterator();
 
         LinearLayout row = new LinearLayout(this);
         row.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             final Button btnTag = new Button(this);
             btnTag.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
             btnTag.setText(iterator.next().toString());
@@ -77,8 +77,10 @@ public class PazzleWordGameActivity extends AbstractEnterGame{
             });
             row.addView(btnTag);
         }
-
+        buttonsLayout.removeAllViews();
         buttonsLayout.addView(row);
+        buttonsLayout.refreshDrawableState();
+        buttonsLayout.clearFocus();
     }
 
     @Override
@@ -90,6 +92,7 @@ public class PazzleWordGameActivity extends AbstractEnterGame{
             txtWord.setText(row.getSecondWord());
 
         txtTranslateWord.setText("");
+        setButtons();
     }
 
     private String getDictionaryName(){

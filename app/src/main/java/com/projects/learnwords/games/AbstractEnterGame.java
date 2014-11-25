@@ -24,7 +24,7 @@ public abstract class AbstractEnterGame extends Activity implements IGame {
     private int repeat= 0;
 
     @Override
-    public void initialize(Context context, String dictName, int repeat){
+    public boolean initialize(Context context, String dictName, int repeat){
         this.context = context;
         this.dictName = dictName;
         this.repeat = repeat;
@@ -36,8 +36,10 @@ public abstract class AbstractEnterGame extends Activity implements IGame {
             currentDictionaryRow = getNextWord();
         }
         if(currentDictionaryRow == null)
-            return; //end game u win!
+            return false; //end game u win!
         setUI(currentDictionaryRow);
+
+        return true;
     }
 
     @Override
